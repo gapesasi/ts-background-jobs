@@ -1,5 +1,6 @@
 import express from "express";
 import { createServer } from "http";
+import controller from "./controller/signup";
 
 export default class Server {
   public app: express.Application;
@@ -22,6 +23,8 @@ export default class Server {
         message: "OK",
       });
     });
+
+    this.app.post("/signup", controller.handle);
   }
 
   public start(port: number) {
